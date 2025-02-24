@@ -3,8 +3,8 @@ require('./config/db'); // Ensure DB is connected before starting the app
 
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const router = require('./router/index');
+const path = require('path');
 const { errorHandler } = require('./utils/errorHandler');
 
 const app = express();
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start Server
+// Start server
 app.listen(port, () => {
     console.log(`✅ Server running at: http://localhost:${port}`);
 });
