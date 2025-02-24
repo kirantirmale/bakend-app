@@ -1,11 +1,10 @@
 require('dotenv').config();
-require('./config/db'); // Ensure DB is connected before starting the app
-
+require('./config/db'); 
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const { errorHandler } = require('./utils/errorHandler');
-const ContactRoter =  require('./router/contact');
+const contactRoutes = require('./router/contact');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,7 +13,8 @@ const port = process.env.PORT || 3000;
 app.use(cors({ origin: "*" }));
 
 app.use(express.json()); // Middleware to parse JSON requests
-app.use('/contact', ContactRoter);
+
+app.use('/api/contact', contactRoutes);
 app.use(errorHandler); // Global error handling middleware
 
 // Serve Static HTML Files
