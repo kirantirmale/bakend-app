@@ -3,7 +3,6 @@ require('./config/db'); // Ensure DB is connected before starting the app
 
 const express = require('express');
 const cors = require('cors');
-const router = require('./router/index');
 const path = require('path');
 const { errorHandler } = require('./utils/errorHandler');
 const ContactRoter =  require('./router/contact');
@@ -15,7 +14,6 @@ const port = process.env.PORT || 3000;
 app.use(cors({ origin: "*" }));
 
 app.use(express.json()); // Middleware to parse JSON requests
-app.use('/api', router); // Routes
 app.use('/contact', ContactRoter);
 app.use(errorHandler); // Global error handling middleware
 
